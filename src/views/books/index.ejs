@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Available Books</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% books.forEach(book => { %>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-2"><%= book.title %></h2>
+                    <p class="text-gray-600 mb-2">Authors: <%= book.authors %></p>
+                    <p class="text-gray-600 mb-2">Category: <%= book.category_name %></p>
+                    <p class="text-gray-600 mb-2">Published: <%= new Date(book.publication_date).toLocaleDateString() %></p>
+                    <p class="text-green-600 font-semibold">Available Copies: <%= book.available_copies %></p>
+                    <a href="/books/<%= book.id %>" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        View Details
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

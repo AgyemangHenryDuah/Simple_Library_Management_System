@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Loans</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">My Loans</h1>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <table class="min-w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <% loans.forEach(loan => { %>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap"><%= loan.title %></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><%= loan.category_name %></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <%= new Date(loan.loan_date).toLocaleDateString() %>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <%= new Date(loan.due_date).toLocaleDateString() %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <a href="/books" class="inline-block mt-4 text-blue-500 hover:text-blue-600">
+            ← Back to Books
+        </a>
+    </div>
+</body>
+</html>
